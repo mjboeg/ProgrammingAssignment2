@@ -1,7 +1,14 @@
-## Put comments here that give an overall description of what your
-## functions do
+## These are functions used to initialize and operate on CacheMatrix objects.
+## A CacheMatrix object is a list containing the functions set.mat(), set.inv(),
+## get.mat(), and get.inv(). These functions all operate in the same environment
+## that is created with the makeCacheMatrix function. The defining environment 
+## stores the value for the matrix and its inverse used by all the function objects
+## in the list.
 
-## Write a short comment describing this function
+## makeCacheMatrix creates the environment that stores the current value of the
+## matrix and its inverse. Its output is a list containing functions to set and get
+## the value of the matrix and the inverse from its location in the makeCacheMatrix
+## environment.
 
 makeCacheMatrix <- function(x = matrix()) {
   inv <- NULL
@@ -17,7 +24,9 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## cacheSolve takes and cacheMatrix object and returns the cached inverse. If a 
+## cached inverse does not exist, it is calculated, stored in the cacheMatrix
+## object, and returned.
 
 cacheSolve <- function(x, ...) {
         x.inv <- x$get.inv()
